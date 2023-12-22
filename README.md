@@ -1,14 +1,6 @@
 <h1 align="center">
-  <img alt="fitflow" title="fitflow" src="./public/FitFlow.PNG" />
+  <img alt="fitflow" title="fitflow" src="./public/FitFlow.PNG" width='200px' />
 </h1>
-
-<p align="center">
-  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-como-executar">Como executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-licença">Licença</a>
-</p>
 
 <br>
 
