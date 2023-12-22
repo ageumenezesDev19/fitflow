@@ -1,16 +1,28 @@
-import Head  from 'next/head';
+import { CompletedChallenges } from '@/components/CompletedChallenges';
 import { ExperienceBar } from '../components/ExperienceBar';
+import { Profile } from '../components/Profile';
+import styles from '../styles/pages/home.module.scss';
+import { Countdown } from '@/components/Countdown';
+
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <>
-      <div className="container">
+      <div className={styles.container}>
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com"/>
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@600&display=swap" rel="stylesheet" />
+          <title>Inicio | FitFlow</title>
         </Head>
         <ExperienceBar />
+
+        <section>
+          <div>
+            <Profile />
+            <CompletedChallenges />
+            <Countdown />
+          </div>
+          <div></div>
+        </section>
       </div>
     </>
   )
