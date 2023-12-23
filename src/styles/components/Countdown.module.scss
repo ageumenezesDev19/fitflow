@@ -81,5 +81,9 @@
   &:not(:disabled):hover {
     background: var(--red);
     color: var(--white);
+
+    .countdownButtonXIcon {
+      filter: brightness(100);
+    }
   }
 }

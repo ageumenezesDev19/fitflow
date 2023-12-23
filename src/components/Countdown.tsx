@@ -65,6 +65,11 @@ export function Countdown() {
               onClick={resetCountdown}
             >
               Abandonar ciclo
+              <img
+                src="icons/close.svg"
+                alt="X icon"
+                className={styles.countdownButtonXIcon}
+              />
             </button>
           ) : (
             <button
