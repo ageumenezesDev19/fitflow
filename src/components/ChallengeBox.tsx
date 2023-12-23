@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import styles from "../styles/components/ChallengeBox.module.scss";
+import { ChallengesContext } from '../contexts/ChallengesContext';
 
 export function ChallengeBox() {
-  const hasActiveChallenge = false;
+  const contextData = useContext(ChallengesContext);
+  console.log(contextData);
+
+  const hasActiveChallenge = true;
 
   return (
     <div className={styles.ChallengeBoxContainer}>
