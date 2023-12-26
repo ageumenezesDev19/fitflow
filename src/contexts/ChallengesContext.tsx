@@ -1,3 +1,4 @@
+import challenges from '../../challenges.json';
 import { ReactNode, createContext, useState } from "react";
 
 interface ChallengeCOntextData {
@@ -19,12 +20,17 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
   const [currentExperience, setCurrentExperience] = useState(0);
   const [challengesCompleted, setChallengesCompleted] = useState(0);
 
+  const [activeChallenge, setActiveChallenge] = useState(null);
+
   function levelUp() {
     setLevel(level + 1);
   }
 
   function startNewChallenges() {
-    console.log("NewChallenge");
+    const randomChallengeIndex = Math.floor(Math.random() * challenges.length);
+    const challenge = challenges[randomChallengeIndex];
+
+    setActiveChallenge(challenge);
   }
 
   return (
