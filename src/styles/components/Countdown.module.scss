@@ -56,6 +56,12 @@
 
   transition: background-color 0.2s;
 
+  .countdownButtonPlayIcon {
+    filter: invert(100%);
+    width: 1rem;
+    margin-left: 1rem;
+  }
+
   &:not(:disabled):hover {
     background: var(--blue-dark);
   }
