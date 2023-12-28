@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import styles from '../styles/pages/Profile.module.scss';
+import React, { useContext } from 'react';
+import styles from '../styles/components/Profile.module.scss';
 import { ChallengesContext } from '@/contexts/ChallengesContext';
 import { ModalContext } from '@/contexts/ModalUserNameContext';
 
