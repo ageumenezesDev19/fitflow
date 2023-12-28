@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styles from '../styles/pages/Profile.module.scss';
 import { ChallengesContext } from '@/contexts/ChallengesContext';
-import { ModalContext } from '@/contexts/ModalContext';
+import { ModalContext } from '@/contexts/ModalUserNameContext';
 
 export function Profile() {
   const { level } = useContext(ChallengesContext);
@@ -16,7 +16,7 @@ export function Profile() {
    } = useContext(ModalContext);
 
   return (
-    <div className={`${isModalOpen ? styles.modalOpen : styles.profileContainer}`}>
+    <div className={`${isModalOpen ? styles.userModalOpen : styles.profileContainer}`}>
       {!isModalOpen && (
         <>
           <img src="/FitFlow.PNG" alt="Nome do Usuário" />
@@ -35,7 +35,7 @@ export function Profile() {
       )}
 
       {isModalOpen && (
-        <div className={styles.modal}>
+        <div className={styles.userNameModal}>
           <textarea
             value={editableName}
             onChange={(e) => setEditableName(e.target.value)}

@@ -1,6 +1,6 @@
 import challenges from '../../challenges.json';
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
-import { ModalContext } from './ModalContext';
+import Cookies from 'js-cookie';
 
 interface Challenge {
   type?: 'body' | 'eye';
@@ -22,17 +22,31 @@ interface ChallengesContextData {
 
 interface ChallengesProviderProps {
   children: ReactNode;
+  level: number,
+  currentExperience: number,
+  challengesCompleted: number,
 }
 
 export const ChallengesContext = createContext({} as ChallengesContextData);
 
-export const ChallengesProvider: React.FC<ChallengesProviderProps> = ({ children }) => {
-  const [level, setLevel] = useState(1);
-  const [currentExperience, setCurrentExperience] = useState(0);
-  const [challengesCompleted, setChallengesCompleted] = useState(0);
-  const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null);
+export const ChallengesProvider: React.FC<ChallengesProviderProps> = ({
+  children,
+  ...rest
+}) => {
 
-  const { editableName } = useContext(ModalContext);
+  const [level, setLevel] = useState(rest.level ?? 1);
+  const [
+    currentExperience,
+    setCurrentExperience
+  ] =useState(rest.currentExperience ?? 0);
+  const [
+    challengesCompleted,
+    setChallengesCompleted
+  ] = useState(rest.challengesCompleted ?? 0);
+  const [
+    activeChallenge,
+    setActiveChallenge
+  ] = useState<Challenge | null>(null);
 
   const experienceToNextLevel = Math.pow((level + 1) * 5, 2);
 
@@ -43,8 +57,10 @@ export const ChallengesProvider: React.FC<ChallengesProviderProps> = ({ children
   }, []);
 
   useEffect(() => {
-
-  }, [level, currentExperience, challengesCompleted, editableName]);
+    Cookies.set('level', String(level));
+    Cookies.set('currentExperience', String(currentExperience));
+    Cookies.set('challengesCompleted', String(challengesCompleted));
+  }, [level, currentExperience, challengesCompleted]);
 
   function levelUp() {
     setLevel(level + 1);

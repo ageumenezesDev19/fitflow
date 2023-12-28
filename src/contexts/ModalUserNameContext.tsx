@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useState, KeyboardEvent } from "react";
+import { createContext, ReactNode, useState, KeyboardEvent, useEffect } from "react";
+import Cookies from 'js-cookie';
 
 interface ModalContextData {
   isModalOpen: boolean;
@@ -12,13 +13,18 @@ interface ModalContextData {
 
 interface ModalProviderProps {
   children: ReactNode;
+  editableName: string,
 }
 
 export const ModalContext = createContext({} as ModalContextData);
 
-export function ModalProvider({ children }: ModalProviderProps) {
+export function ModalProvider({ children, ...rest }: ModalProviderProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editableName, setEditableName] = useState("");
+  const [editableName, setEditableName] = useState(rest.editableName ?? "");
+
+  useEffect(() => {
+    Cookies.set('editableName', String(editableName));
+  }, [editableName]);
 
   const handleEditClick = () => {
     setIsModalOpen(true);
