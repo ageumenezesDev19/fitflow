@@ -15,3 +15,23 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Projeto
 
 O FitFlow é um app que une a técnica de Pomodoro com a realização de exercícios físicos para quem passa muito tempo na frente do computador.
+
+### Prerequisites
+- Node.js and npm
+- Git
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/your-project.git
+   ```
+2. Open and install the project dependencies:
+   ```bash
+   cd fitflow
+   npm install
+   ```
+3. Run the project on localhost:
+   ```bash
+   npm run dev
+   ```
