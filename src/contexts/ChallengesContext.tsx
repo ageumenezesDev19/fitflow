@@ -81,7 +81,9 @@ export const ChallengesProvider: React.FC<ChallengesProviderProps> = ({
 
     setActiveChallenge(challenge);
 
-    new Audio('/notification.mp3').play();
+    const audio = new Audio('/notification.mp3');
+    audio.load();
+    audio.play().catch(error => console.error(error));
 
     if (Notification.permission === 'granted') {
       new Notification('Novo desafio 🎉', {
