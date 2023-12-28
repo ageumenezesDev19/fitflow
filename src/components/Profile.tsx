@@ -1,54 +1,29 @@
 import React, { useContext, useState } from 'react';
 import styles from '../styles/pages/Profile.module.scss';
 import { ChallengesContext } from '@/contexts/ChallengesContext';
-
-interface handleTextareaKeyDownProps {
-  key: string;
-  shiftKey: any;
-  preventDefault: () => void;
-}
+import { ModalContext } from '@/contexts/ModalUserNameContext';
 
 export function Profile() {
   const { level } = useContext(ChallengesContext);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editableName, setEditableName] = useState("Adicionar Nome");
-
-  const handleEditClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleSaveClick = () => {
-    if (validateName(editableName)) {
-      setIsModalOpen(false);
-    } else {
-      alert('Por favor, insira um nome válido.');
-    }
-  };
-
-  const handleCancelClick = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleTextareaKeyDown = (e: handleTextareaKeyDownProps) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSaveClick();
-    }
-  };
-
-  const validateName = (name: string) => {
-    return name.trim() !== '' && name.split('\n').length === 1 && name.length <= 28;
-  };
+  const { 
+      isModalOpen,
+      editableName,
+      handleEditClick,
+      handleSaveClick,
+      handleCancelClick,
+      handleTextareaKeyDown,
+      setEditableName
+   } = useContext(ModalContext);
 
   return (
-    <div className={`${isModalOpen ? styles.modalOpen : styles.profileContainer}`}>
+    <div className={`${isModalOpen ? styles.userModalOpen : styles.profileContainer}`}>
       {!isModalOpen && (
         <>
           <img src="/FitFlow.PNG" alt="Nome do Usuário" />
           <div>
             <strong>
               <span onClick={handleEditClick} style={{ cursor: 'pointer' }}>
-                {editableName}
+                {editableName || 'Adicionar Nome'}
               </span>
             </strong>
             <p>
@@ -60,7 +35,7 @@ export function Profile() {
       )}
 
       {isModalOpen && (
-        <div className={styles.modal}>
+        <div className={styles.userNameModal}>
           <textarea
             value={editableName}
             onChange={(e) => setEditableName(e.target.value)}
