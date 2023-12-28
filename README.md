@@ -35,3 +35,5 @@ O FitFlow é um app que une a técnica de Pomodoro com a realização de exercí
    ```bash
    npm run dev
    ```
+
+   ## Use Chrome for the best experience!
