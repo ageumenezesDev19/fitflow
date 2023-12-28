@@ -1,5 +1,6 @@
 import challenges from '../../challenges.json';
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useContext, useEffect, useState } from "react";
+import { ModalContext } from './ModalContext';
 
 interface Challenge {
   type?: 'body' | 'eye';
@@ -31,6 +32,8 @@ export const ChallengesProvider: React.FC<ChallengesProviderProps> = ({ children
   const [challengesCompleted, setChallengesCompleted] = useState(0);
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null);
 
+  const { editableName } = useContext(ModalContext);
+
   const experienceToNextLevel = Math.pow((level + 1) * 5, 2);
 
   useEffect(() => {
@@ -38,6 +41,10 @@ export const ChallengesProvider: React.FC<ChallengesProviderProps> = ({ children
       Notification.requestPermission();
     }
   }, []);
+
+  useEffect(() => {
+
+  }, [level, currentExperience, challengesCompleted, editableName]);
 
   function levelUp() {
     setLevel(level + 1);
