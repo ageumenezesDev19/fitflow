@@ -24,7 +24,7 @@ O FitFlow é um app que une a técnica de Pomodoro com a realização de exercí
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-project.git
+   git clone git@github.com:ageumenezesDev19/fitflow.git
    ```
 2. Open and install the project dependencies:
    ```bash
